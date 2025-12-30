@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Responsive Landing Page</title>
+
+  <style>
+    /* ----- BASIC STYLES ----- */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: #0e0e1a;
+      color: white;
+      line-height: 1.6;
+    }
+
+    /* ----- NAVBAR ----- */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(10px);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 40px;
+      transition: background 0.3s ease;
+      z-index: 1000;
+    }
+
+    nav.scrolled {
+      background: #0077ff;
+    }
+
+    nav .logo {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: white;
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+    }
+
+    nav ul li {
+      margin: 0 15px;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: white;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    nav ul li a:hover {
+      color: #00ffff;
+    }
+
+    /* ----- HERO SECTION ----- */
+    section {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 80px 20px;
+    }
+
+    .hero {
+      background: linear-gradient(to bottom right, #00111f, #062e53);
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      max-width: 600px;
+      font-size: 1.2rem;
+    }
+
+    /* ----- ABOUT SECTION ----- */
+    .about {
+      background: #101828;
+    }
+
+    .about h2 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+    }
+
+    .about p {
+      max-width: 600px;
+      font-size: 1.1rem;
+    }
+
+    /* ----- RESPONSIVE DESIGN ----- */
+    @media (max-width: 768px) {
+      nav ul {
+        flex-direction: column;
+        background: rgba(0, 0, 0, 0.9);
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        display: none;
+      }
+
+      nav ul.show {
+        display: flex;
+      }
+
+      nav .menu-toggle {
+        display: block;
+        cursor: pointer;
+      }
+
+      nav .menu-toggle div {
+        width: 25px;
+        height: 3px;
+        background: white;
+        margin: 5px;
+      }
+    }
+
+    @media (min-width: 769px) {
+      .menu-toggle {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVIGATION -->
+  <nav>
+    <div class="logo">My Page</div>
+
+    <div class="menu-toggle" id="menu-toggle">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+
+    <ul id="menu">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO SECTION -->
+  <section class="hero" id="home">
+    <h1>Welcome to mypage</h1>
+    <p>Building creative, interactive, and responsive web experiences that bring ideas to life.</p>
+  </section>
+
+  <!-- ABOUT SECTION -->
+  <section class="about" id="about">
+    <h2>About Us</h2>
+    <p>We specialize in designing responsive websites with dynamic user interfaces, ensuring a seamless experience across all devices.</p>
+  </section>
+
+  <!-- SERVICES SECTION -->
+  <section class="hero" id="services">
+    <h2>Our Services</h2>
+    <p>We offer web development, UI/UX design, and digital branding to help your business grow online.</p>
+  </section>
+
+  <!-- CONTACT SECTION -->
+  <section class="about" id="contact">
+    <h2>Contact Us</h2>
+    <p>Get in touch to start your next digital project today!</p>
+  </section>
+
+  <script>
+    // Change navbar color on scroll
+    window.addEventListener("scroll", function() {
+      const nav = document.querySelector("nav");
+      nav.classList.toggle("scrolled", window.scrollY > 50);
+    });
+
+    // Mobile menu toggle
+    const toggle = document.getElementById("menu-toggle");
+    const menu = document.getElementById("menu");
+
+    toggle.addEventListener("click", () => {
+      menu.classList.toggle("show");
+    });
+  </script>
+</body>
+</html>
